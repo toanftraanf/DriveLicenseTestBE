@@ -19,6 +19,8 @@ namespace DriverLicenseTestBE.ViewModels
         [Required(ErrorMessage = "Password is required")]
         //[RegularExpression(@"^(?=.*[A-Za-z])(?=.*\d).{6,}$", ErrorMessage = "Password must have at least 6 characters and be alphanumeric")]
         public string Password { get; set; } = null!;
+
+        public bool RememberMe { get; set; } = false;
     }
 
     public class UserRegisterVM
@@ -38,5 +40,17 @@ namespace DriverLicenseTestBE.ViewModels
         [RegularExpression(@"^[a-zA-Z\s]+$", ErrorMessage = "Full Name must contain only letters and spaces")]
         [StringLength(50, ErrorMessage = "Full Name cannot exceed 50 characters")]
         public string FullName { get; set; } = string.Empty;
+    }
+    public class CheckEmailVM
+    {
+        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$",
+        ErrorMessage = "Email is not valid")]
+        public string Email { get; set; }
+
+    }
+    public class TimeOutMessageVM
+    {
+        public string Message { get; set; }
+        public int TimeOut { get; set; }
     }
 }

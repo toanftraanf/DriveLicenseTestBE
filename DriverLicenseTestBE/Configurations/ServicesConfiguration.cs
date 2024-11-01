@@ -9,6 +9,7 @@ namespace DriverLicenseTestBE.Configurations
             services.AddMvc();
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IAuthenticationService, AuthenticationService>();
+            services.AddScoped<IQuestionService, QuestionService>();
         }
     }
 }
