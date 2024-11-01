@@ -1,5 +1,4 @@
-﻿using DriverLicenseTestBE.Models;
-using DriverLicenseTestBE.Services;
+﻿using DriverLicenseTestBE.Services;
 using DriverLicenseTestBE.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,8 +29,7 @@ namespace DriverLicenseTestBE.Controllers
         [HttpGet("{id}")]
         public IActionResult GetQuestionById(int id)
         {
-            Question question;
-            string msg = _questionService.GetQuestionById(id, out question);
+            string msg = _questionService.GetQuestionById(id, out object question);
             if (msg.Length > 0) return BadRequest(msg);
 
             return Ok(question);
@@ -40,14 +38,13 @@ namespace DriverLicenseTestBE.Controllers
         [HttpGet]
         public IActionResult GetAllQuestions()
         {
-            dynamic questionsResult;
-            string msg = _questionService.GetAllQuestions(out questionsResult);
+            string msg = _questionService.GetAllQuestions(out object questionsResult);
             if (msg.Length > 0) return BadRequest(msg);
             return Ok(questionsResult);
         }
 
-        [HttpPut]
-        public IActionResult UpdateQuestion(Question model)
+        [HttpPut("UpdateQuestion")]
+        public IActionResult UpdateQuestion(UpdateQuestionVM model)
         {
             if (!ModelState.IsValid) return BadRequest(ModelState);
 

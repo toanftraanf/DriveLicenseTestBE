@@ -20,4 +20,21 @@ namespace DriverLicenseTestBE.ViewModels
         public string AnswerText { get; set; } = null!;
         public bool IsCorrect { get; set; } = false;
     }
+    public class UpdateQuestionVM
+    {
+        [Required]
+        public int QuestionId { get; set; }
+        [Required]
+        public string Content { get; set; } = null!;
+        [Required]
+        public List<UpdateAnswerVM> Answers { get; set; }
+    }
+    public class UpdateAnswerVM
+    {
+        [Required]
+        public int AnswerId { get; set; }
+        [Required]
+        public string AnswerText { get; set; } = null!;
+        public bool IsCorrect { get; set; } = false;
+    }
 }
